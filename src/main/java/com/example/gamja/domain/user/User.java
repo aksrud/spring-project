@@ -1,4 +1,4 @@
-package com.example.gamja.domain.model;
+package com.example.gamja.domain.user;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,6 +14,7 @@ public class User{
     private String email;
     private String password;
 
+    @Builder
     public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
@@ -21,12 +22,20 @@ public class User{
     }
 
     public static User create(String username, String email, String password) {
-        return new User(username, email, password);
+        return User.builder()
+                .username(username)
+                .email(email)
+                .password(password)
+                .build();
     }
 
-    public void updateUser(String username, String email, String password) {
+    public void updateUsername(String username) {
         this.username = username;
+    }
+    public void updateEmail(String email) {
         this.email = email;
+    }
+    public void updatePassword(String password) {
         this.password = password;
     }
 }

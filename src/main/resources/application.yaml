@@ -1,0 +1,31 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: spring-project
+  config:
+    import: optional:file:.env[.properties]
+  thymeleaf:
+    prefix: classpath:/templates/  # 기본 템플릿 경로
+    suffix: .html  # 파일 확장자 설정
+    mode: HTML  # HTML 모드로 렌더링
+    encoding: UTF-8  # 문자 인코딩 설정
+  servlet:
+    multipart:
+      max-request-size: 30MB
+      max-file-size: 30MB
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 10
