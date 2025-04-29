@@ -26,11 +26,7 @@ public class UserServiceImpl implements UserService {
         } else if (userRepository.existsByUsername(userRequestDto.getUsername())) {
             throw new IllegalArgumentException("이미 사용 중인 닉네임입니다.");
         }
-        User user = User.create(
-                userRequestDto.getUsername(),
-                userRequestDto.getEmail(),
-                userRequestDto.getPassword()
-        );
+        User user = userRequestDto.toUser();
         userRepository.save(user); // 처음 만들어진 엔티티는 영속성 컨텍스트에 속하지 않기 때문에 따로 save를 해야됨
         return UserResponseDto.from(user);
     }

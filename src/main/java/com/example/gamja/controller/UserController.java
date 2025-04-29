@@ -1,6 +1,4 @@
 package com.example.gamja.controller;
-
-import com.example.gamja.domain.user.User;
 import com.example.gamja.dto.user.request.UserRequestDto;
 import com.example.gamja.dto.user.response.UserResponseDto;
 import com.example.gamja.service.UserService;
