@@ -1,10 +1,10 @@
 package com.example.gamja.dto.user.response;
 import com.example.gamja.domain.user.User;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
+@Builder
 public class UserResponseDto {
     private Long id;
     private String username;
@@ -16,8 +16,11 @@ public class UserResponseDto {
         this.email = email;
     }
 
-
     public static UserResponseDto from(User user) {
-        return new UserResponseDto(user.getId(), user.getUsername(), user.getEmail());
+        return UserResponseDto.builder()
+                .id(user.getId())
+                .username(user.getUsername())
+                .email(user.getEmail())
+                .build();
     }
 }
