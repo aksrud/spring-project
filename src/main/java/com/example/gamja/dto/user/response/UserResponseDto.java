@@ -1,5 +1,5 @@
 package com.example.gamja.dto.user.response;
-import com.example.gamja.domain.user.User;
+import com.example.gamja.domain.user.UserEntity;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -16,11 +16,11 @@ public class UserResponseDto {
         this.email = email;
     }
 
-    public static UserResponseDto from(User user) {
+    public static UserResponseDto from(UserEntity userEntity) {
         return UserResponseDto.builder()
-                .id(user.getId())
-                .username(user.getUsername())
-                .email(user.getEmail())
+                .id(userEntity.getId())
+                .username(userEntity.getUsername())
+                .email(userEntity.getEmail())
                 .build();
     }
 }

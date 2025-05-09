@@ -18,7 +18,7 @@ spring:
     show-sql: true
     generate-ddl: true
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
@@ -29,3 +29,6 @@ spring:
     password: ${DB_PASSWORD}
     hikari:
       maximum-pool-size: 10
+  jwt:
+    expiration-time: ${EXPIRATION_TIME}
+    secret: ${SECRET_KET}

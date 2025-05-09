@@ -4,7 +4,7 @@ import com.example.gamja.dto.user.response.UserResponseDto;
 
 public interface UserService {
     // 사용자 생성
-    UserResponseDto createUser(UserRequestDto userRequestDto);
+    void joinUser(UserRequestDto userRequestDto);
 
     // 사용자 조회 (ID로 찾기)
     UserResponseDto getUserById(Long id);

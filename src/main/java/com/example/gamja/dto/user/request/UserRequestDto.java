@@ -1,7 +1,7 @@
 package com.example.gamja.dto.user.request;
 
 
-import com.example.gamja.domain.user.User;
+import com.example.gamja.domain.user.UserEntity;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 
@@ -20,18 +20,19 @@ public class UserRequestDto {
     @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,16}", message = "비밀번호는 8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.")
     private String password;
 
-    public void applyTo(User user) {
-        user.updateUsername(username);
-        user.updateEmail(email);
-        user.updatePassword(password);
+    public void applyTo(UserEntity userEntity) {
+        userEntity.updateUsername(username);
+        userEntity.updateEmail(email);
+        userEntity.updatePassword(password);
     }
 
     // Dto to Entity
-    public User toUser() {
-        return User.builder()
+    public UserEntity toUser() {
+        return UserEntity.builder()
                 .username(username)
                 .email(email)
                 .password(password)
+                .role("ROLE_USER")
                 .build();
     }
 }

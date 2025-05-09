@@ -6,27 +6,21 @@ import lombok.*;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class User{
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String email;
     private String password;
+    private String role;
 
     @Builder
-    public User(String username, String email, String password) {
+    public UserEntity(String username, String email, String password, String role) {
         this.username = username;
         this.email = email;
         this.password = password;
-    }
-
-    public static User create(String username, String email, String password) {
-        return User.builder()
-                .username(username)
-                .email(email)
-                .password(password)
-                .build();
+        this.role = role;
     }
 
     public void updateUsername(String username) {

@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping
 public class UserController {
     private final UserService userService;
 
@@ -17,11 +17,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    // 사용자 생성 (POST)
-    @PostMapping
-    public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto userRequestDto) {
-        UserResponseDto createdUser = userService.createUser(userRequestDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+    // 사용자 회윈 가입(생성) (POST)
+    @PostMapping("/join")
+    public ResponseEntity<Void> joinUser(@RequestBody UserRequestDto userRequestDto) {
+        userService.joinUser(userRequestDto);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     // 사용자 조회 (GET by ID)
